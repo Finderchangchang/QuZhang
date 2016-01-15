@@ -17,7 +17,7 @@ public class LoginListener {
     /**
      * 执行登录的相关操作
      */
-    public void loading() {
+    public void loading(String userId, String pwd) {
         mView.LoadResult(true);//登录成功
     }
 }
