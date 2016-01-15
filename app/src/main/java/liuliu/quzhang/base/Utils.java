@@ -7,14 +7,17 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Base64;
 import android.view.WindowManager;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.URLEncoder;
 
 /**
  * Created by Administrator on 2015/12/29.
@@ -192,5 +195,39 @@ public class Utils {
             netType = NETTYPE_WIFI;
         }
         return netType;
+    }
+
+    public static boolean isEmptyString(String str) {
+        return (str == null || str.length() == 0);
+    }
+
+    public static String encodeBitmap(Bitmap bitmap) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 60, baos);
+            return Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT)
+                    .trim();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static String URLEncode(String text) {
+        if (isEmptyString(text))
+            return "";
+        return text;
+        /*
+         * if(Utils.isEmptyString(text)) return "";
+		 *
+		 * return URLEncoder.encode(text);
+		 */
+    }
+
+    public static String URLEncodeImage(String text) {
+        if (Utils.isEmptyString(text))
+            return "";
+
+        return URLEncoder.encode(text);
     }
 }
