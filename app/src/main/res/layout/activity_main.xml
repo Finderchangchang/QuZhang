@@ -53,6 +53,7 @@
                     android:background="@mipmap/main_white_search" />
 
                 <TextView
+                    android:id="@+id/search_choice_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -66,6 +67,18 @@
     <ListView
         android:id="@+id/show_lv_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/no_shuju_ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="没有相关数据..." />
+    </LinearLayout>
 
 </LinearLayout>
