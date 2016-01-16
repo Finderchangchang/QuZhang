@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/login_bg"
-    android:gravity="center"
     android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/setting_iv_login"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="46dp"
+            android:clickable="true"
+            android:src="@mipmap/setting_icon" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
+        android:gravity="center"
         android:orientation="vertical">
 
         <EditText
             android:id="@+id/userid_login_et"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="35dp"
             android:background="@drawable/radius_corner_line"
             android:hint="请输入用户名"
             android:paddingLeft="5dp" />
@@ -24,7 +42,7 @@
         <EditText
             android:id="@+id/pwd_login_et"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="35dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/radius_corner_line"
             android:hint="请输入密码"
@@ -34,7 +52,7 @@
         <Button
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="35dp"
             android:layout_marginTop="10dp"
             android:background="#4169e1"
             android:text="登录"
@@ -42,4 +60,4 @@
     </LinearLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

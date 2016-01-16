@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import net.tsz.afinal.annotation.view.CodeNote;
 
@@ -133,19 +134,24 @@ public class MainActivity extends BaseActivity {
                 holder.setText(R.id.yz_content_tv, model.getYZContent());
                 holder.setText(R.id.jb_name_tv, model.getJBName());
                 holder.setText(R.id.kz_unit_tv, model.getKZUnit());
-                holder.setOnClickListener(R.id.quzhang_btn_main, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mUtils.IntentPost(WritePersonInfoActivity.class, new Utils.putListener() {
-                            @Override
-                            public void put(Intent intent) {
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable("YZXXModel", model);
-                                intent.putExtras(bundle);
-                            }
-                        });
-                    }
-                });
+                if (!model.isQUZhang()) {
+                    holder.setOnClickListener(R.id.quzhang_btn_main, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mUtils.IntentPost(WritePersonInfoActivity.class, new Utils.putListener() {
+                                @Override
+                                public void put(Intent intent) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putSerializable("YZXXModel", model);
+                                    intent.putExtras(bundle);
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    holder.setVisible(R.id.quzhang_btn_main, false);
+                }
+
             }
         };
         show_lv.setAdapter(mAdapter);

@@ -3,6 +3,8 @@ package liuliu.quzhang.ui.activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import net.tsz.afinal.annotation.view.CodeNote;
 
@@ -23,6 +25,8 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     EditText pwd_et;
     @CodeNote(id = R.id.login_btn, click = "onClick")
     Button login_btn;
+    @CodeNote(id = R.id.setting_iv_login, click = "onClick")
+    ImageView setting_iv_login;
     LoginListener mLogin;
 
     @Override
@@ -45,7 +49,11 @@ public class LoginActivity extends BaseActivity implements ILoginView {
                     mLogin.loading(userId, pwd);
                 } else {
                     //账号密码不能为空
+                    Toast.makeText(this, "账号或密码不能为空！！", Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.setting_iv_login:
+                mUtils.IntentPost(SettingActivity.class);
                 break;
         }
     }
