@@ -43,6 +43,7 @@ import liuliu.quzhang.base.BaseActivity;
 import liuliu.quzhang.base.Utils;
 import liuliu.quzhang.model.BlueToothModel;
 import liuliu.quzhang.model.PersonModel;
+import liuliu.quzhang.model.YZXXModel;
 
 /**
  * Created by Administrator on 2016/1/15.
@@ -78,10 +79,8 @@ public class WritePersonInfoActivity extends BaseActivity {
     TextView tCount;
     @CodeNote(id = R.id.reg_person_image)
     ImageView pimg;
-    @CodeNote(id = R.id.edit_write_bluetooth)
-    EditText SearchBlueTooth;
-    private String[] blue_device_scale;
-    List<BlueToothModel> listblue;
+
+
     StringBuffer path = new StringBuffer();
     @CodeNote(id = R.id.img_photo_image)
     ImageView img;
@@ -99,20 +98,19 @@ public class WritePersonInfoActivity extends BaseActivity {
 
     @Override
     public void initEvents() {
-        getBluetooth();
+
         new CopyFile().CopyWltlib(WritePersonInfoActivity.this);
         readCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onReadCardCvr();
+                if(Utils.ReadString(WritePersonInfoActivity.this, "BLUETOOTH").equals("")){
+                    Toast.makeText(WritePersonInfoActivity.this, "请选择蓝牙设备！", Toast.LENGTH_SHORT).show();
+                }else {
+                    onReadCardCvr();
+                }
             }
         });
-        SearchBlueTooth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog(blue_device_scale);
-            }
-        });
+
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,7 +163,11 @@ public class WritePersonInfoActivity extends BaseActivity {
                         @Override
                         public void run() {
                             Looper.prepare();
+                            YZXXModel model=new YZXXModel();
+                           // model=mDB.findAllByWhere(YZXXModel.class," ")
                             Toast.makeText(WritePersonInfoActivity.this, "信息上传成功！", Toast.LENGTH_SHORT).show();
+
+                           // mDB.update();
                             Looper.loop();
                         }
                     };
@@ -227,40 +229,8 @@ public class WritePersonInfoActivity extends BaseActivity {
 
     }
 
-    private void getBluetooth() {
-        BluetoothAdapter mBtAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (mBtAdapter == null) {
-            Toast.makeText(WritePersonInfoActivity.this, "不支持蓝牙设备！", Toast.LENGTH_SHORT).show();
-        }
-        Set<BluetoothDevice> pairedDevices = mBtAdapter.getBondedDevices();
-        if (pairedDevices.size() == 0) {
-            Toast.makeText(WritePersonInfoActivity.this, "没有配对蓝牙设备！", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
-        }
-        blue_device_scale = new String[pairedDevices.size()];
-        int count = 0;
-        listblue = new ArrayList<BlueToothModel>();
-        for (BluetoothDevice device : pairedDevices) {
-            BlueToothModel blue = new BlueToothModel();
-            blue.setDeviceName(device.getName());
-            blue.setDeviceAddress(device.getAddress());
-            listblue.add(blue);
-            blue_device_scale[count++] = device.getName();
-        }
-    }
 
-    //选择弹出框
-    private void showDialog(final String[] value) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(WritePersonInfoActivity.this, Window.FEATURE_NO_TITLE);
-        builder.setItems(value, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                SearchBlueTooth.setText(listblue.get(which).getDeviceName());
-                Utils.WriteString(WritePersonInfoActivity.this, "BLUETOOTH", listblue.get(which).getDeviceAddress());
-            }
-        });
-        builder.show();
-    }
+
 
     //cvr
     private void onReadCardCvr() {
