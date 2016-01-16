@@ -51,6 +51,15 @@ public class Utils {
         mContext.startActivity(intent);
     }
 
+    public void IntentActivityForResult(Class cla, putListener listener) {
+        Intent intent = new Intent();
+        intent.setClass(mContext, cla);
+        if(listener!=null){
+            listener.put(intent);
+        }
+
+    }
+
     public void IntentPost(Class cla) {
         IntentPost(cla, null);
     }

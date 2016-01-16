@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/yzid_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="1301040000848"
+            android:textColor="#020202"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/company_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="河北大众集团"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <me.next.tagview.TagCloudView
+                android:id="@+id/yz_types_tcv"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginLeft="-3dp"
+                android:layout_marginTop="-8dp"
+                app:tcvBorder="8dp"
+                app:tcvItemBorderHorizontal="8dp"
+                app:tcvItemBorderVertical="6dp"
+                app:tcvTextColor="#123455" />
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:background="@mipmap/one_line" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/jb_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="李四"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/kz_unit_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="雪碧刻章中心" />
+
+                <me.next.tagview.TagCloudView
+                    android:id="@+id/yz_type_tcv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:tcvBorder="8dp"
+                    app:tcvItemBorderHorizontal="8dp"
+                    app:tcvItemBorderVertical="6dp"
+                    app:tcvTextColor="#123455" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/yz_content_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:text="河北大众集团 合同专用章(3)"
+                android:textColor="#838383"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="10dp"
+                android:background="#10abd2"
+                android:text="取章"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
