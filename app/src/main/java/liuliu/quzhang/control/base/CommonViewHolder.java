@@ -25,6 +25,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import liuliu.quzhang.R;
+import me.next.tagview.TagCloudView;
 
 /**
  * Created by liuliu on 2015/11/16   16:29
@@ -116,6 +117,12 @@ public class CommonViewHolder {
     public CommonViewHolder setText(int viewId, Object text) {
         TextView view = getView(viewId);
         view.setText(text + "");
+        return this;
+    }
+
+    public CommonViewHolder setTag(int viewId, List<String> list) {
+        TagCloudView view = getView(viewId);
+        view.setTags(list);
         return this;
     }
 
