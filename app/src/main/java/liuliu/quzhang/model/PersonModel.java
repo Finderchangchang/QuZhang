@@ -10,68 +10,68 @@ import liuliu.quzhang.base.Utils;
  */
 public class PersonModel implements Serializable {
     private String id;
-    private String PersonId;//ÈËÔ±±àÂë
-    private String PersonCompanyId;//ÆóÒµ±àÂë
-    private String PersonPoliceId;//Ãñ¾¯±àÂë
-    private String PersonTerminalId;//Éè±¸±àÂë
-    private String PersonTransactionId;//ÊÂÎñ±àÂë
-    private String PersonComapnyType;//ÈËÔ±Á¥ÊôÆóÒµÀàĞÍ
-    private String PersonComapnyName;//ÆóÒµÃû³Æ
-    private String PersonCardType;//Ö¤¼şÀàĞÍ
-    private String PersonCardId;//Ö¤¼şºÅÂë
-    private String PersonName;//ÈËÔ±ĞÕÃû
-    private String PersonSex;//ĞÔ±ğ1ÄĞ2Å®
-    private String PersonNation;//Ãñ×å
-    private String PersonNative;//¼®¹á
-    private String PersonBirthday;//³öÉúÈÕÆÚ
-    private String PersonAddress;//ÏêÏ¸µØÖ·
-    private String PersonPhoneNumeber;//ÁªÏµµç»°
+    private String PersonId;//äººå‘˜ç¼–ç 
+    private String PersonCompanyId;//ä¼ä¸šç¼–ç 
+    private String PersonPoliceId;//æ°‘è­¦ç¼–ç 
+    private String PersonTerminalId;//è®¾å¤‡ç¼–ç 
+    private String PersonTransactionId;//äº‹åŠ¡ç¼–ç 
+    private String PersonComapnyType;//äººå‘˜éš¶å±ä¼ä¸šç±»å‹
+    private String PersonComapnyName;//ä¼ä¸šåç§°
+    private String PersonCardType;//è¯ä»¶ç±»å‹
+    private String PersonCardId;//è¯ä»¶å·ç 
+    private String PersonName;//äººå‘˜å§“å
+    private String PersonSex;//æ€§åˆ«1ç”·2å¥³
+    private String PersonNation;//æ°‘æ—
+    private String PersonNative;//ç±è´¯
+    private String PersonBirthday;//å‡ºç”Ÿæ—¥æœŸ
+    private String PersonAddress;//è¯¦ç»†åœ°å€
+    private String PersonPhoneNumeber;//è”ç³»ç”µè¯
     /// <summary>
-    /// ¶«¾­¡£
+    /// ä¸œç»ã€‚
     /// </summary>
     private String PersonEastPoint;
 
     /// <summary>
-    /// ±±Î³¡£
+    /// åŒ—çº¬ã€‚
     /// </summary>
     private String PersonNorthPoint;
 
     /// <summary>
-    /// Ö¤¼şÕÕÆ¬¡£
+    /// è¯ä»¶ç…§ç‰‡ã€‚
     /// </summary>
     private String PersonCardImage;
 
     /// <summary>
-    /// Êµ¼ÊÕÕÆ¬¡£
+    /// å®é™…ç…§ç‰‡ã€‚
     /// </summary>
     private String PersonRealImage;
 
     /// <summary>
-    /// ±¸×¢£¨³¤¶È200£©¡£
+    /// å¤‡æ³¨ï¼ˆé•¿åº¦200ï¼‰ã€‚
     /// </summary>
     private String PersonComment;
 
     /// <summary>
-    /// ÈËÔ±×´Ì¬¡£
+    /// äººå‘˜çŠ¶æ€ã€‚
     /// </summary>
     private String PersonStatus;
 
     /// <summary>
-    /// ´´½¨Ê±¼ä¡£
+    /// åˆ›å»ºæ—¶é—´ã€‚
     /// </summary>
     private String PersonCreateTime;
 
     /// <summary>
-    /// ĞŞ¸ÄÊ±¼ä¡£
+    /// ä¿®æ”¹æ—¶é—´ã€‚
     /// </summary>
     private String PersonChangeTime;
     /// <summary>
-    /// ÈÕÆÚ¡£
+    /// æ—¥æœŸã€‚
     /// </summary>
     private String PersonDate;
 
     /// <summary>
-    /// Á÷Ë®ĞòºÅ¡£
+    /// æµæ°´åºå·ã€‚
     /// </summary>
     private int PersonIndex;
 
@@ -79,43 +79,43 @@ public class PersonModel implements Serializable {
 
     private String PersonAtLarge;
     /// <summary>
-    /// Æğ×âÊ±¼ä¡£
+    /// èµ·ç§Ÿæ—¶é—´ã€‚
     /// </summary>
     private String CheckInTime;
 
     /// <summary>
-    /// ½ØÖÁÊ±¼ä¡£
+    /// æˆªè‡³æ—¶é—´ã€‚
     /// </summary>
     private String CheckOutTime;
 
     /// <summary>
-    /// ÊÇ·ñÓÉÏµÍ³×Ô¶¯Àëµê¡£
+    /// æ˜¯å¦ç”±ç³»ç»Ÿè‡ªåŠ¨ç¦»åº—ã€‚
     /// </summary>
     private String AutoCheckOut;
     //company
     /// <summary>
-    /// ÈËÔ±ÈëÖ°Ê±¼ä¡£
+    /// äººå‘˜å…¥èŒæ—¶é—´ã€‚
     /// </summary>
     //private String checkInTime;
 
     /// <summary>
-    /// ÈËÔ±ÀëÖ°Ê±¼ä¡£
+    /// äººå‘˜ç¦»èŒæ—¶é—´ã€‚
     /// </summary>
     // private String checkOutTime;
 
     /// <summary>
-    /// Ö°Îñ£¨³¤¶È30£©¡£
+    /// èŒåŠ¡ï¼ˆé•¿åº¦30ï¼‰ã€‚
     /// </summary>
     private String office;
 
     /// <summary>
-    /// ¹¤×÷¸ÚÎ»£¨³¤¶È30£©¡£
+    /// å·¥ä½œå²—ä½ï¼ˆé•¿åº¦30ï¼‰ã€‚
     /// </summary>
     private String job;
 
     //free
     /// <summary>
-    /// ÅÌ²éÔ­Òò£¨³¤¶È200£©¡£
+    /// ç›˜æŸ¥åŸå› ï¼ˆé•¿åº¦200ï¼‰ã€‚
     /// </summary>
     private String checkReason;
 
