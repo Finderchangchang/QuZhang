@@ -79,7 +79,8 @@ public class WritePersonInfoActivity extends BaseActivity {
     TextView tCount;
     @CodeNote(id = R.id.reg_person_image)
     ImageView pimg;
-
+    @CodeNote(id = R.id.text_count_mes)
+    TextView countmes;
 
     StringBuffer path = new StringBuffer();
     @CodeNote(id = R.id.img_photo_image)
@@ -126,6 +127,8 @@ public class WritePersonInfoActivity extends BaseActivity {
                 if (isMobileNum(shentel.getText().toString().trim())) {
                     Toast.makeText(WritePersonInfoActivity.this, "发送成功！", Toast.LENGTH_SHORT).show();
                     count = 30;
+                    tCount.setVisibility(View.VISIBLE);
+                    countmes.setVisibility(View.VISIBLE);
                     btnYan.setEnabled(false);
                     TTimer = new Timer();
                     TTtimerTask = new TimerTask() {
@@ -166,9 +169,13 @@ public class WritePersonInfoActivity extends BaseActivity {
                             Looper.prepare();
                             YZXXModel model = new YZXXModel();
                             // model=mDB.findAllByWhere(YZXXModel.class," ")
+                            List<YZXXModel> list = mDB.findAllByWhere(YZXXModel.class, "SignetId='" + yzxxModel.getSignetId() + "'");
+                            if(list.size()>0){
+                                yzxxModel=list.get(0);
+                                yzxxModel.setQUZhang(true);
+                                mDB.update(yzxxModel);
+                            }
 
-                            yzxxModel.setQUZhang(true);
-                            mDB.update(yzxxModel);
                             clearText();
                             Toast.makeText(WritePersonInfoActivity.this, "信息上传成功！", Toast.LENGTH_SHORT).show();
                             Looper.loop();
@@ -195,6 +202,8 @@ public class WritePersonInfoActivity extends BaseActivity {
         btnYan.setEnabled(true);
         TTimer = null;
         TTtimerTask = null;
+        tCount.setVisibility(View.GONE);
+        countmes.setVisibility(View.GONE);
         tCount.setText("00");
     }
 
@@ -210,6 +219,8 @@ public class WritePersonInfoActivity extends BaseActivity {
                     tCount.setText(count + "");
                 }
             } else {
+                tCount.setVisibility(View.GONE);
+                countmes.setVisibility(View.GONE);
                 btnYan.setEnabled(true);
                 if (TTimer != null) {
                     TTimer.cancel();

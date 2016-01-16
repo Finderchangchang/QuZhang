@@ -321,14 +321,16 @@
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
-
                     android:text="00"
-                    android:textColor="#f00" />
+                    android:textColor="#f00"
+                    android:visibility="gone" />
 
                 <TextView
+                    android:id="@+id/text_count_mes"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="秒后可重新获取" />
+                    android:text="秒后可重新获取"
+                    android:visibility="gone" />
             </LinearLayout>
 
             <LinearLayout
@@ -359,7 +361,7 @@
             <ImageView
                 android:id="@+id/img_photo_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:src="@mipmap/morentupian" />
