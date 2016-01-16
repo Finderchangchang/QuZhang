@@ -111,6 +111,10 @@ public class MainActivity extends BaseActivity {
                     loadRefresh(list);
                 }
                 break;
+            case 1:
+                List<YZXXModel> list = mDB.findAll(YZXXModel.class);
+                loadRefresh(list);
+                break;
         }
     }
 
@@ -139,12 +143,13 @@ public class MainActivity extends BaseActivity {
                     holder.setOnClickListener(R.id.quzhang_btn_main, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            mUtils.IntentPost(WritePersonInfoActivity.class, new Utils.putListener() {
+                            mUtils.IntentActivityForResult(WritePersonInfoActivity.class, new Utils.putListener() {
                                 @Override
                                 public void put(Intent intent) {
                                     Bundle bundle = new Bundle();
                                     bundle.putSerializable("YZXXModel", model);
                                     intent.putExtras(bundle);
+                                    startActivityForResult(intent, 1);
                                 }
                             });
                         }
