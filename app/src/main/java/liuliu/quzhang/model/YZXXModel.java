@@ -1,10 +1,13 @@
 package liuliu.quzhang.model;
 
+import java.io.Serializable;
+
 /**
  * 印章信息模型
  * Created by Administrator on 2016/1/16.
  */
-public class YZXXModel {
+public class YZXXModel implements Serializable {
+    private int id;
     private String SignetId;//印章编码
     private boolean SPState;//审批状态
     private String GGId;//印章规格
