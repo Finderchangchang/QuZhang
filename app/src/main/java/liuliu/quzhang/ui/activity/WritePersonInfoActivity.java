@@ -92,6 +92,8 @@ public class WritePersonInfoActivity extends BaseActivity {
     Timer TTimer;
     TimerTask TTtimerTask;
     YZXXModel yzxxModel;
+    @CodeNote(id = R.id.back_iv_search)
+    ImageView backImg;
 
     @Override
     public void initViews() {
@@ -101,7 +103,12 @@ public class WritePersonInfoActivity extends BaseActivity {
 
     @Override
     public void initEvents() {
-
+        backImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         new CopyFile().CopyWltlib(WritePersonInfoActivity.this);
         readCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,8 +177,8 @@ public class WritePersonInfoActivity extends BaseActivity {
                             YZXXModel model = new YZXXModel();
                             // model=mDB.findAllByWhere(YZXXModel.class," ")
                             List<YZXXModel> list = mDB.findAllByWhere(YZXXModel.class, "SignetId='" + yzxxModel.getSignetId() + "'");
-                            if(list.size()>0){
-                                yzxxModel=list.get(0);
+                            if (list.size() > 0) {
+                                yzxxModel = list.get(0);
                                 yzxxModel.setQUZhang(true);
                                 mDB.update(yzxxModel);
                             }

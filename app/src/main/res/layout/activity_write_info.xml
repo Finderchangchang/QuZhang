@@ -100,7 +100,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_edittext"
-                            android:paddingLeft="3dp" />
+
+                            android:padding="5dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -120,7 +121,8 @@
                             android:id="@+id/et_write_qutel"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bg_edittext" />
+                            android:background="@drawable/bg_edittext"
+                            android:padding="5dp" />
                     </LinearLayout>
 
 
@@ -163,7 +165,8 @@
                     android:id="@+id/et_write_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_edittext" />
+                    android:background="@drawable/bg_edittext"
+                    android:padding="5dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -184,7 +187,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_edittext"
-                    android:minLines="2" />
+                    android:minLines="2"
+                    android:padding="5dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -310,7 +314,8 @@
                     android:id="@+id/et_wrte_shenname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_edittext" />
+                    android:background="@drawable/bg_edittext"
+                    android:padding="5dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -332,7 +337,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
-                    android:background="@drawable/bg_edittext" />
+                    android:background="@drawable/bg_edittext"
+                    android:padding="5dp" />
 
                 <Button
                     android:id="@+id/btn_yan"
@@ -363,7 +369,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
-                    android:background="@drawable/bg_edittext" />
+                    android:background="@drawable/bg_edittext"
+                    android:padding="5dp" />
 
                 <TextView
                     android:id="@+id/text_count"
