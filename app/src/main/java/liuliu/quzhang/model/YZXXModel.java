@@ -15,11 +15,12 @@ public class YZXXModel {
     private String UserCompanyName;//使用单位
     private String KZUnit;//刻制单位
     private String DJTime;//登记时间
+    private boolean QUZhang;//是否已经取走（true,取走。false,未取走）
 
     public YZXXModel() {
     }
 
-    public YZXXModel(String signetId, boolean SPState, String GGId, String ZTCL, String YZType, String YZContent, String JBName, String userCompanyName, String KZUnit, String DJTime) {
+    public YZXXModel(String signetId, boolean SPState, String GGId, String ZTCL, String YZType, String YZContent, String JBName, String userCompanyName, String KZUnit, String DJTime, boolean QuZhang) {
         SignetId = signetId;
         this.SPState = SPState;
         this.GGId = GGId;
@@ -30,6 +31,15 @@ public class YZXXModel {
         UserCompanyName = userCompanyName;
         this.KZUnit = KZUnit;
         this.DJTime = DJTime;
+        this.QUZhang = QuZhang;
+    }
+
+    public boolean isQUZhang() {
+        return QUZhang;
+    }
+
+    public void setQUZhang(boolean QUZhang) {
+        this.QUZhang = QUZhang;
     }
 
     public String getSignetId() {
