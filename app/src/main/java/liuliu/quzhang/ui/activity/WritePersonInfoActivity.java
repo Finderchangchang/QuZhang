@@ -88,6 +88,8 @@ public class WritePersonInfoActivity extends BaseActivity {
     Bitmap bm = null;
     @CodeNote(id = R.id.write_save)
     Button btnSave;
+    @CodeNote(id = R.id.back_iv_search, click = "onClick")
+    ImageView back_iv_search;
     int count = 0;
     Timer TTimer;
     TimerTask TTtimerTask;
@@ -170,8 +172,8 @@ public class WritePersonInfoActivity extends BaseActivity {
                             YZXXModel model = new YZXXModel();
                             // model=mDB.findAllByWhere(YZXXModel.class," ")
                             List<YZXXModel> list = mDB.findAllByWhere(YZXXModel.class, "SignetId='" + yzxxModel.getSignetId() + "'");
-                            if(list.size()>0){
-                                yzxxModel=list.get(0);
+                            if (list.size() > 0) {
+                                yzxxModel = list.get(0);
                                 yzxxModel.setQUZhang(true);
                                 mDB.update(yzxxModel);
                             }
@@ -340,5 +342,13 @@ public class WritePersonInfoActivity extends BaseActivity {
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.back_iv_search:
+                this.finish();
+                break;
+        }
     }
 }
