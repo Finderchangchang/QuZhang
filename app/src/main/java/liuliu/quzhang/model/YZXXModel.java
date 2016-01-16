@@ -37,6 +37,14 @@ public class YZXXModel implements Serializable {
         this.QUZhang = QuZhang;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public boolean isQUZhang() {
         return QUZhang;
     }
