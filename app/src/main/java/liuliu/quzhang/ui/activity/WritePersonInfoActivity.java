@@ -90,10 +90,12 @@ public class WritePersonInfoActivity extends BaseActivity {
     int count = 0;
     Timer TTimer;
     TimerTask TTtimerTask;
+    YZXXModel yzxxModel;
 
     @Override
     public void initViews() {
         setContentView(R.layout.activity_write_info);
+        yzxxModel = (YZXXModel) getIntent().getSerializableExtra("YZXXModel");
     }
 
     @Override
@@ -103,9 +105,9 @@ public class WritePersonInfoActivity extends BaseActivity {
         readCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Utils.ReadString(WritePersonInfoActivity.this, "BLUETOOTH").equals("")){
+                if (Utils.ReadString(WritePersonInfoActivity.this, "BLUETOOTH").equals("")) {
                     Toast.makeText(WritePersonInfoActivity.this, "请选择蓝牙设备！", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     onReadCardCvr();
                 }
             }
@@ -162,11 +164,11 @@ public class WritePersonInfoActivity extends BaseActivity {
                         @Override
                         public void run() {
                             Looper.prepare();
-                            YZXXModel model=new YZXXModel();
-                           // model=mDB.findAllByWhere(YZXXModel.class," ")
+                            YZXXModel model = new YZXXModel();
+                            // model=mDB.findAllByWhere(YZXXModel.class," ")
                             Toast.makeText(WritePersonInfoActivity.this, "信息上传成功！", Toast.LENGTH_SHORT).show();
-
-                           // mDB.update();
+                            yzxxModel.setQUZhang(true);
+                            mDB.update(yzxxModel);
                             Looper.loop();
                         }
                     };
@@ -227,8 +229,6 @@ public class WritePersonInfoActivity extends BaseActivity {
         return m.matches();
 
     }
-
-
 
 
     //cvr
