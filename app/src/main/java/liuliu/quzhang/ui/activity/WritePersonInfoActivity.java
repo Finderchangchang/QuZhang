@@ -94,6 +94,8 @@ public class WritePersonInfoActivity extends BaseActivity {
     Timer TTimer;
     TimerTask TTtimerTask;
     YZXXModel yzxxModel;
+    @CodeNote(id = R.id.back_iv_search)
+    ImageView backImg;
 
     @Override
     public void initViews() {
@@ -103,7 +105,12 @@ public class WritePersonInfoActivity extends BaseActivity {
 
     @Override
     public void initEvents() {
-
+        backImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         new CopyFile().CopyWltlib(WritePersonInfoActivity.this);
         readCard.setOnClickListener(new View.OnClickListener() {
             @Override
