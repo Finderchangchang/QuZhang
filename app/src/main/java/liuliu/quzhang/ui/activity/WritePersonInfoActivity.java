@@ -122,7 +122,6 @@ public class WritePersonInfoActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (isMobileNum(shentel.getText().toString().trim())) {
-
                     Toast.makeText(WritePersonInfoActivity.this, "发送成功！", Toast.LENGTH_SHORT).show();
                     count = 30;
                     btnYan.setEnabled(false);
