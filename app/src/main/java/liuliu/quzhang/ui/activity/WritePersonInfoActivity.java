@@ -166,9 +166,11 @@ public class WritePersonInfoActivity extends BaseActivity {
                             Looper.prepare();
                             YZXXModel model = new YZXXModel();
                             // model=mDB.findAllByWhere(YZXXModel.class," ")
-                            Toast.makeText(WritePersonInfoActivity.this, "信息上传成功！", Toast.LENGTH_SHORT).show();
+
                             yzxxModel.setQUZhang(true);
                             mDB.update(yzxxModel);
+                            clearText();
+                            Toast.makeText(WritePersonInfoActivity.this, "信息上传成功！", Toast.LENGTH_SHORT).show();
                             Looper.loop();
                         }
                     };
@@ -227,7 +229,6 @@ public class WritePersonInfoActivity extends BaseActivity {
         Matcher m = p.matcher(mobiles);
         System.out.println(m.matches() + "---");
         return m.matches();
-
     }
 
 
