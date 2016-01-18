@@ -343,6 +343,7 @@ public class WritePersonInfoActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        setResult(1, null);
         TTimer = null;
         TTtimerTask = null;
     }
