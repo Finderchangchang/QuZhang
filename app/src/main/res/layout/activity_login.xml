@@ -37,7 +37,8 @@
             android:layout_height="40dp"
             android:background="@drawable/radius_corner_line"
             android:hint="请输入用户名"
-            android:paddingLeft="5dp" />
+            android:paddingLeft="5dp"
+            android:text="1306030001" />
 
         <EditText
             android:id="@+id/pwd_login_et"
