@@ -157,6 +157,7 @@ public class MainActivity extends BaseActivity {
                 } else {
                     Button btn = holder.getView(R.id.quzhang_btn_main);
                     btn.setText("已取章");
+                    btn.setClickable(false);
                 }
 
             }
