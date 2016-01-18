@@ -100,15 +100,17 @@ public class MainActivity extends BaseActivity {
         // 根据上面发送过去的请求吗来区别
         switch (requestCode) {
             case 0:
-                String choice = data.getStringExtra("choice").toString().trim();
-                if (!choice.equals("")) {
-                    search_choice_tv.setText("条件：“" + choice + "”");
-                    List<YZXXModel> list = mDB.findAllByWhere(YZXXModel.class, "SignetId like '%" + choice + "%' or UserCompanyName like '%" + choice + "%'");
-                    loadRefresh(list);
-                } else {
-                    search_choice_tv.setText("请输入相关查询条件");
-                    List<YZXXModel> list = mDB.findAll(YZXXModel.class);
-                    loadRefresh(list);
+                if (data != null) {
+                    String choice = data.getStringExtra("choice").toString().trim();
+                    if (!choice.equals("")) {
+                        search_choice_tv.setText("条件：“" + choice + "”");
+                        List<YZXXModel> list = mDB.findAllByWhere(YZXXModel.class, "SignetId like '%" + choice + "%' or UserCompanyName like '%" + choice + "%'");
+                        loadRefresh(list);
+                    } else {
+                        search_choice_tv.setText("请输入相关查询条件");
+                        List<YZXXModel> list = mDB.findAll(YZXXModel.class);
+                        loadRefresh(list);
+                    }
                 }
                 break;
             case 1:
