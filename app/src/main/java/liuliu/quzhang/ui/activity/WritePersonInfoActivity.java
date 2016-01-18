@@ -105,10 +105,12 @@ public class WritePersonInfoActivity extends BaseActivity {
 
     @Override
     public void initEvents() {
+        List<YZXXModel> list1=mDB.findAll(YZXXModel.class);
         backImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+                setResult(1, null);
             }
         });
         new CopyFile().CopyWltlib(WritePersonInfoActivity.this);
@@ -117,6 +119,8 @@ public class WritePersonInfoActivity extends BaseActivity {
             public void onClick(View v) {
                 if (Utils.ReadString(WritePersonInfoActivity.this, "BLUETOOTH").equals("")) {
                     Toast.makeText(WritePersonInfoActivity.this, "请选择蓝牙设备！", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(WritePersonInfoActivity.this,SettingActivity.class);
+                    startActivity(intent);
                 } else {
                     onReadCardCvr();
                 }
@@ -143,11 +147,9 @@ public class WritePersonInfoActivity extends BaseActivity {
                     TTtimerTask = new TimerTask() {
                         @Override
                         public void run() {
-
                             Message msg = new Message();
                             msg.what = 0;
                             handler.sendMessage(msg);
-
                         }
                     };
                     TTimer.schedule(TTtimerTask, 0, 1000);
@@ -178,42 +180,52 @@ public class WritePersonInfoActivity extends BaseActivity {
                             Looper.prepare();
                             YZXXModel model = new YZXXModel();
                             // model=mDB.findAllByWhere(YZXXModel.class," ")
+
                             List<YZXXModel> list = mDB.findAllByWhere(YZXXModel.class, "SignetId='" + yzxxModel.getSignetId() + "'");
                             if (list.size() > 0) {
                                 yzxxModel = list.get(0);
-                                yzxxModel.setQUZhang(true);
+                                yzxxModel.setQUZhang("1");
                                 mDB.update(yzxxModel);
                             }
-
-                            clearText();
-                            Toast.makeText(WritePersonInfoActivity.this, "信息上传成功！", Toast.LENGTH_SHORT).show();
+                            Message msg = new Message();
+                            msg.what = 0;
+                            handlerclear.sendMessage(msg);
                             Looper.loop();
                         }
                     };
                     timer.schedule(tast, 2000);
                 }
-
             }
         });
     }
 
-    private void clearText() {
-        quanme.setText("");
-        qutel.setText("");
-        card.setText("");
-        address.setText("");
-        shentel.setText("");
-        shenname.setText("");
-        yanzheng.setText("");
+    Handler handlerclear = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            clearText();
+            Toast.makeText(WritePersonInfoActivity.this, "信息上传成功！", Toast.LENGTH_SHORT).show();
+        }
+    };
 
-        img.setImageResource(R.mipmap.person_header);
-        pimg.setImageResource(R.mipmap.morentupian);
-        btnYan.setEnabled(true);
-        TTimer = null;
-        TTtimerTask = null;
-        tCount.setVisibility(View.GONE);
-        countmes.setVisibility(View.GONE);
-        tCount.setText("00");
+    private void clearText() {
+        setResult(1,null);
+        finish();
+//        quanme.setText("");
+//        qutel.setText("");
+//        card.setText("");
+//        address.setText("");
+//        shentel.setText("");
+//        shenname.setText("");
+//        yanzheng.setText("");
+//
+//        pimg.setImageResource(R.mipmap.person_header);
+//        img.setImageResource(R.mipmap.morentupian);
+//        btnYan.setEnabled(true);
+//        TTimer = null;
+//        TTtimerTask = null;
+//        tCount.setVisibility(View.GONE);
+//        countmes.setVisibility(View.GONE);
+//        tCount.setText("00");
     }
 
     Handler handler = new Handler() {

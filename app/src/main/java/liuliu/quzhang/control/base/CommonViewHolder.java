@@ -74,6 +74,7 @@ public class CommonViewHolder {
      */
     public static CommonViewHolder get(Context context, View convertView,
                                        ViewGroup parent, int layoutId, int position) {
+        String s="";
         if (convertView == null) {
             return new CommonViewHolder(context, parent, layoutId, position);
         }
@@ -99,11 +100,7 @@ public class CommonViewHolder {
      * @return
      */
     public <T extends View> T getView(int viewId) {
-        View view = mViews.get(viewId);
-        if (view == null) {
-            view = mConvertView.findViewById(viewId);
-            mViews.put(viewId, view);
-        }
+        View view = mConvertView.findViewById(viewId);
         return (T) view;
     }
 
