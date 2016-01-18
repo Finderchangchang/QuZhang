@@ -38,7 +38,8 @@
             android:background="@drawable/radius_corner_line"
             android:hint="请输入用户名"
             android:paddingLeft="5dp"
-            android:text="1306030001" />
+            android:text="1306030001"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/pwd_login_et"
@@ -48,7 +49,8 @@
             android:background="@drawable/radius_corner_line"
             android:hint="请输入密码"
             android:paddingLeft="5dp"
-            android:password="true" />
+            android:password="true"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/login_btn"
