@@ -34,7 +34,7 @@
         <EditText
             android:id="@+id/userid_login_et"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:background="@drawable/radius_corner_line"
             android:hint="请输入用户名"
             android:paddingLeft="5dp" />
@@ -42,7 +42,7 @@
         <EditText
             android:id="@+id/pwd_login_et"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/radius_corner_line"
             android:hint="请输入密码"
@@ -52,7 +52,7 @@
         <Button
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:background="#4169e1"
             android:text="登录"

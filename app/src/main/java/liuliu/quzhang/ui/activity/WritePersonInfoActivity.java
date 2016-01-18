@@ -154,7 +154,6 @@ public class WritePersonInfoActivity extends BaseActivity {
 
                 } else {
                     Toast.makeText(WritePersonInfoActivity.this, "手机号输入错误！", Toast.LENGTH_SHORT).show();
-
                 }
             }
         });
