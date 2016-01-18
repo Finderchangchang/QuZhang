@@ -101,11 +101,12 @@ public class WritePersonInfoActivity extends BaseActivity {
     public void initViews() {
         setContentView(R.layout.activity_write_info);
         yzxxModel = (YZXXModel) getIntent().getSerializableExtra("YZXXModel");
+        shenname.setText(yzxxModel.getSQRName());
+        shentel.setText(yzxxModel.getSQRTelNumber());
     }
 
     @Override
     public void initEvents() {
-        List<YZXXModel> list1=mDB.findAll(YZXXModel.class);
         backImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +120,7 @@ public class WritePersonInfoActivity extends BaseActivity {
             public void onClick(View v) {
                 if (Utils.ReadString(WritePersonInfoActivity.this, "BLUETOOTH").equals("")) {
                     Toast.makeText(WritePersonInfoActivity.this, "请选择蓝牙设备！", Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(WritePersonInfoActivity.this,SettingActivity.class);
+                    Intent intent = new Intent(WritePersonInfoActivity.this, SettingActivity.class);
                     startActivity(intent);
                 } else {
                     onReadCardCvr();
@@ -207,7 +208,7 @@ public class WritePersonInfoActivity extends BaseActivity {
     };
 
     private void clearText() {
-        setResult(1,null);
+        setResult(1, null);
         finish();
 //        quanme.setText("");
 //        qutel.setText("");
@@ -324,6 +325,7 @@ public class WritePersonInfoActivity extends BaseActivity {
         }
         nation.setText(person.getPersonNation());
         time.setText(person.getPersonBirthday());
+        address.setText(person.getPersonAddress());
     }
 
     //开启拍照

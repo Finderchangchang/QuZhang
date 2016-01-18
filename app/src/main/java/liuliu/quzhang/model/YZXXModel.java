@@ -18,14 +18,14 @@ public class YZXXModel implements Serializable {
     private String UserCompanyName;//使用单位
     private String KZUnit;//刻制单位
     private String DJTime;//登记时间
-    private boolean QUZhang;//是否已经取走（true,取走。false,未取走）
-    private String SQRName;//申请人姓名
+    private String QUZhang;//是
+    private String SQRName;//申请人姓名否已经取走（true,取走。false,未取走）
     private String SQRTelNumber;//申请人手机号
 
     public YZXXModel() {
     }
 
-    public YZXXModel(String signetId, boolean SPState, String GGId, String ZTCL, String YZType, String YZContent, String JBName, String userCompanyName, String KZUnit, String DJTime, boolean QUZhang, String SQRName, String SQRTelNumber) {
+    public YZXXModel(String signetId, boolean SPState, String GGId, String ZTCL, String YZType, String YZContent, String JBName, String userCompanyName, String KZUnit, String DJTime, String QUZhang, String SQRName, String SQRTelNumber) {
         SignetId = signetId;
         this.SPState = SPState;
         this.GGId = GGId;
@@ -38,6 +38,22 @@ public class YZXXModel implements Serializable {
         this.DJTime = DJTime;
         this.QUZhang = QUZhang;
         this.SQRName = SQRName;
+        this.SQRTelNumber = SQRTelNumber;
+    }
+
+    public String getSQRName() {
+        return SQRName;
+    }
+
+    public void setSQRName(String SQRName) {
+        this.SQRName = SQRName;
+    }
+
+    public String getSQRTelNumber() {
+        return SQRTelNumber;
+    }
+
+    public void setSQRTelNumber(String SQRTelNumber) {
         this.SQRTelNumber = SQRTelNumber;
     }
 
