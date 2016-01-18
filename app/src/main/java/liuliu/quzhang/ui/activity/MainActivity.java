@@ -97,10 +97,10 @@ public class MainActivity extends BaseActivity {
     // 回调方法，从第二个页面回来的时候会执行这个方法
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String choice = data.getStringExtra("choice").toString().trim();
         // 根据上面发送过去的请求吗来区别
         switch (requestCode) {
             case 0:
+                String choice = data.getStringExtra("choice").toString().trim();
                 if (!choice.equals("")) {
                     search_choice_tv.setText("条件：“" + choice + "”");
                     List<YZXXModel> list = mDB.findAllByWhere(YZXXModel.class, "SignetId like '%" + choice + "%' or UserCompanyName like '%" + choice + "%'");
