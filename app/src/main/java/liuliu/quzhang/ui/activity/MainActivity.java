@@ -140,6 +140,9 @@ public class MainActivity extends BaseActivity {
                 holder.setText(R.id.jb_name_tv, model.getJBName());
                 holder.setText(R.id.kz_unit_tv, model.getKZUnit());
                 if (model.getQUZhang().equals("0")) {
+                    Button btn = holder.getView(R.id.quzhang_btn_main);
+                    btn.setText("取章");
+                    btn.setClickable(true);
                     holder.setOnClickListener(R.id.quzhang_btn_main, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
