@@ -2,7 +2,10 @@ package liuliu.quzhang.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -21,25 +24,26 @@ import liuliu.quzhang.control.base.CommonViewHolder;
 import liuliu.quzhang.control.base.CommoneAdapter;
 import liuliu.quzhang.model.PersonModel;
 import liuliu.quzhang.model.YZXXModel;
+import liuliu.quzhang.view.RefreshListView;
 
 /**
  * 主页面
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements RefreshListView.OnRefreshListener{
     @CodeNote(id = R.id.title_user_name_main)
     TextView title_user_name;
     @CodeNote(id = R.id.search_ll_main, click = "onClick")
     LinearLayout search_ll;
     @CodeNote(id = R.id.show_lv_main)
-    ListView show_lv;
+    RefreshListView show_lv;
     @CodeNote(id = R.id.search_choice_tv)
     TextView search_choice_tv;
     @CodeNote(id = R.id.no_shuju_ll_main)
     LinearLayout no_shuju_ll_main;
     CommoneAdapter mAdapter;
     List<YZXXModel> mList;
-
-
+    View footerView;
+    TextView bottom_ll;
     @Override
     public void initViews() {
         setContentView(R.layout.activity_main);
@@ -65,6 +69,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initEvents() {
+        initFooterView();
         try {
             List mResult = mDB.findAll(YZXXModel.class);
             if (mResult.size() == 0) {
@@ -78,7 +83,6 @@ public class MainActivity extends BaseActivity {
             }
         }
         reloadList(mList);
-
     }
 
     public void onClick(View view) {
@@ -124,11 +128,10 @@ public class MainActivity extends BaseActivity {
         mAdapter = new CommoneAdapter<YZXXModel>(this, list, R.layout.item_main) {
             @Override
             public void convert(CommonViewHolder holder, final YZXXModel model, int position) {
-                holder.setText(R.id.yzid_tv, model.getSignetId());
-                holder.setText(R.id.company_name_tv, model.getUserCompanyName());
+                holder.setText(R.id.item_cid, model.getSignetId());
+                holder.setText(R.id.item_cname, model.getUserCompanyName());
                 List list = new ArrayList();
                 list.add(model.getYZType());
-                holder.setTag(R.id.yz_type_tcv, list);
                 list = new ArrayList();
                 list.add(model.getGGId());//印章规格
                 list.add(model.getZTCL());//章体材料
@@ -137,39 +140,32 @@ public class MainActivity extends BaseActivity {
                 } else {
                     list.add("未审批");
                 }
-                holder.setTag(R.id.yz_types_tcv, list);
-                holder.setText(R.id.yz_content_tv, model.getYZContent());
-                holder.setText(R.id.jb_name_tv, model.getJBName());
-                holder.setText(R.id.kz_unit_tv, model.getKZUnit());
-                if (model.getQUZhang().equals("0")) {
-                    Button btn = holder.getView(R.id.quzhang_btn_main);
-                    btn.setText("取章");
-                    btn.setClickable(true);
-                    holder.setOnClickListener(R.id.quzhang_btn_main, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            mUtils.IntentActivityForResult(WritePersonInfoActivity.class, new Utils.putListener() {
-                                @Override
-                                public void put(Intent intent) {
-                                    Bundle bundle = new Bundle();
-                                    bundle.putSerializable("YZXXModel", model);
-                                    intent.putExtras(bundle);
-                                    startActivityForResult(intent, 1);
-                                }
-                            });
-                        }
-                    });
-                } else {
-                    Button btn = holder.getView(R.id.quzhang_btn_main);
-                    btn.setText("已取章");
-                    btn.setClickable(false);
-                }
-
             }
         };
         show_lv.setAdapter(mAdapter);
+        show_lv.setOnRefreshListener(MainActivity.this);//开启刷新
     }
-
+    /**
+     * 设置底部加载内容
+     */
+    private void initFooterView() {
+        footerView = View.inflate(MainActivity.this, R.layout.item_bottom, null);
+        footerView.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, 100));
+        bottom_ll = (TextView) footerView.findViewById(R.id.bottom_ll);
+        bottom_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Utils.isNetworkConnected(MainActivity.this)) {//联网状态，加载页面
+                   // listener.LeavePerson(++maxPage, false);
+                    initDatas();
+                  loadRefresh(mList);
+                } else {
+                   // ToastShort(Utils.getString(R.string.check_online));
+                }
+            }
+        });
+        show_lv.addFooterView(footerView);
+    }
     private void loadRefresh(List list) {
         if (list.size() == 0) {
             no_shuju_ll_main.setVisibility(View.VISIBLE);
@@ -180,5 +176,42 @@ public class MainActivity extends BaseActivity {
         }
         reloadList(list);
         mAdapter.notifyDataSetChanged();
+    }
+    private final static int REFRESH_COMPLETE = 0;
+    private final static int NO_ONLINE = 1;
+    private int maxPage = 0;
+    private Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case REFRESH_COMPLETE:
+                    maxPage = 1;
+                    //listener.LeavePerson(maxPage, true);
+                    //listener.LoadMain();
+                    show_lv.refreshComplete();
+                    mAdapter.notifyDataSetChanged();
+                    break;
+                case NO_ONLINE:
+                   // MainActivity.mInstance.ToastShort(Utils.getString(R.string.check_online));
+                    show_lv.refreshComplete();//关闭顶部下拉动画
+                    //首次无网状态刷新
+                    //if (modelList.size() == 0) initNoDataView();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+    @Override
+    public void onRefresh() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (Utils.isNetworkConnected(MainActivity.this)) {
+                    mHandler.sendEmptyMessage(REFRESH_COMPLETE);
+                } else {
+                    mHandler.sendEmptyMessage(NO_ONLINE);
+                }
+            }
+        }).start();
     }
 }

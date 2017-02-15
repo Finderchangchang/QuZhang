@@ -3,115 +3,117 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/yzid_tv"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="1301040000848"
-            android:textColor="#020202"
-            android:textSize="16sp" />
+            android:src="@mipmap/item_xinxi" />
 
         <TextView
-            android:id="@+id/company_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="河北大众集团"
-            android:textSize="12sp" />
+            android:text="刻制编号："
+            android:textColor="#3D3D3D"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/item_cid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="1306000001"
+            android:textColor="#3D3D3D"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/item_company" />
 
-        <LinearLayout
+
+        <TextView
+            android:id="@+id/item_cname"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="16dp"
+            android:textColor="#3D3D3D"
+            android:text="石家庄市同美网络科技有限责任公司" />
 
-            <me.next.tagview.TagCloudView
-                android:id="@+id/yz_types_tcv"
-                android:layout_width="wrap_content"
-                android:layout_height="34dp"
-                android:layout_marginLeft="-3dp"
-                android:layout_marginTop="-8dp"
-                app:tcvBorder="8dp"
-                app:tcvItemBorderHorizontal="8dp"
-                app:tcvItemBorderVertical="6dp"
-                app:tcvTextColor="#123455" />
 
-            <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="1dp"-->
-            <!--android:layout_marginLeft="10dp"-->
-            <!--android:layout_marginRight="10dp"-->
-            <!--android:background="@mipmap/one_line" />-->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:id="@+id/jb_name_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="李四"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/kz_unit_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="雪碧刻章中心" />
-
-                <me.next.tagview.TagCloudView
-                    android:id="@+id/yz_type_tcv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:tcvBorder="8dp"
-                    app:tcvItemBorderHorizontal="8dp"
-                    app:tcvItemBorderVertical="6dp"
-                    app:tcvTextColor="#123455" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/yz_content_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:text="河北大众集团 合同专用章(3)"
-                android:textColor="#838383"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="65dp"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/quzhang_btn_main"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="5dp"
-                android:background="#10abd2"
-                android:text="取章"
-                android:textColor="#ffffff" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/item_btn_quzhang"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/btn_bgcolor"
+            android:text="取章"
+            android:textColor="#ffffff" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/item_person" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="印章数量："
+            android:textColor="#3D3D3D"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/item_zhang_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textColor="#3D3D3D"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查看详细"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="状态："
+            android:textColor="#3D3D3D"
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/item_text_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/hong"
+            android:text="未领取"/>
+    </LinearLayout>
+
+
 </LinearLayout>

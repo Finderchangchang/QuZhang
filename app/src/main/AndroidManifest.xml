@@ -40,6 +40,8 @@
         </activity>
         <activity android:name=".ui.activity.SearchActivity" />
         <activity android:name=".ui.activity.SettingActivity" />
+        <activity android:name=".ui.activity.CaiJiActivity"/>
+        <activity android:name=".ui.activity.QuZhangActivity"/>
     </application>
 
 </manifest>

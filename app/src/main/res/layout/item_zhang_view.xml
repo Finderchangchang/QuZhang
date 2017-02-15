@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/item_image_yuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/content_yuan"
+            android:gravity="center"
+            android:text="12"
+            android:textColor="#3D3D3D"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/item_content_companyname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/item_image_yuan"
+            android:text="石家庄同美网络科技有限责任公司公章"
+            android:textColor="#3D3D3D"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/item_content_caizhi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_content_companyname"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/item_image_yuan"
+            android:text="金属材质"
+            android:textColor="#3D3D3D"
+            android:textSize="12dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/content_btn_qu" />
+    </RelativeLayout>
+</LinearLayout>
